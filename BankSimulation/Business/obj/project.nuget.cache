@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "O4dkQZEf05dZcx9rxF2rTzz+zKvCyNwkd+AvLbax3GXN5cw25dj+PbdPP+ai9QZ96wkpBmiS+RrS/0cJxCji8g==",
+  "success": true,
+  "projectFilePath": "/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Business/Business.csproj",
+  "expectedPackageFiles": [
+    "/Users/rufat/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "/Users/rufat/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

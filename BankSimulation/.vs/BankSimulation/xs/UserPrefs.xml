@@ -1,4 +1,38 @@
 ﻿<Properties StartupConfiguration="{89E2EFF6-E724-4E01-9310-EBCC74317BF8}|Default">
-  <MonoDevelop.Ide.ItemProperties.BankSimulation FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.BankSimulation PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Utilities FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Entities FirstBuild="True" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.DataContext FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DataContext/DbContext.cs">
+    <Files>
+      <File FileName="BankSimulation/Program.cs" Line="14" Column="30" />
+      <File FileName="Entities/Models/User.cs" Line="10" Column="46" />
+      <File FileName="Entities/Models/Bank.cs" Line="7" Column="27" />
+      <File FileName="Entities/Interfaces/IEntity.cs" Line="6" Column="28" />
+      <File FileName="DataContext/DbContext.cs" Line="14" Column="29" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BankSimulation" expanded="True">
+            <Node name="BankSimulation" expanded="True" />
+            <Node name="Business" expanded="True" />
+            <Node name="DataContext" expanded="True">
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Repository" expanded="True" />
+              <Node name="DbContext.cs" selected="True" />
+            </Node>
+            <Node name="Utilities" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Business FirstBuild="True" />
 </Properties>
