@@ -1,10 +1,13 @@
 ﻿using System;
 namespace Utilities
 {
-	public class Helper
+	public static class Helper
 	{
-		public Helper()
+		public static void SetMessageAndColor(string message,ConsoleColor color)
 		{
+			Console.ForegroundColor = color;
+			Console.WriteLine(message);
+			Console.ResetColor();
 		}
 	}
 }

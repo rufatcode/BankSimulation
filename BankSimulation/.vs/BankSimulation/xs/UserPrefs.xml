@@ -9,26 +9,37 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.DataContext FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DataContext/DbContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Business/Services/BankService.cs">
     <Files>
-      <File FileName="BankSimulation/Program.cs" Line="14" Column="30" />
-      <File FileName="Entities/Models/User.cs" Line="10" Column="46" />
-      <File FileName="Entities/Models/Bank.cs" Line="7" Column="27" />
-      <File FileName="Entities/Interfaces/IEntity.cs" Line="6" Column="28" />
-      <File FileName="DataContext/DbContext.cs" Line="14" Column="29" />
+      <File FileName="BankSimulation/Program.cs" />
+      <File FileName="DataContext/DbContext.cs" />
+      <File FileName="DataContext/Repository/BankRepository.cs" Line="9" Column="29" />
+      <File FileName="DataContext/Interfaces/IRepository.cs" Line="1" Column="1" />
+      <File FileName="DataContext/Repository/UserRepository.cs" />
+      <File FileName="Business/Interfaces/IBank.cs" Line="13" Column="30" />
+      <File FileName="Business/Services/BankService.cs" Line="9" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="BankSimulation" expanded="True">
-            <Node name="BankSimulation" expanded="True" />
-            <Node name="Business" expanded="True" />
+            <Node name="BankSimulation" expanded="True">
+              <Node name="Controller" expanded="True" />
+            </Node>
+            <Node name="Business" expanded="True">
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="BankService.cs" selected="True" />
+              </Node>
+            </Node>
             <Node name="DataContext" expanded="True">
               <Node name="Interfaces" expanded="True" />
               <Node name="Repository" expanded="True" />
-              <Node name="DbContext.cs" selected="True" />
             </Node>
-            <Node name="Utilities" expanded="True" />
+            <Node name="Entities" expanded="True">
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>

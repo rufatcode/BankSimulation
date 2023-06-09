@@ -1,11 +1,82 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DataContext": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Business.dll": {}
+        }
+      },
+      "DataContext/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DataContext.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataContext.dll": {}
+        }
+      },
+      "Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entities.dll": {}
+        }
+      },
+      "Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilities.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Business/1.0.0": {
+      "type": "project",
+      "path": "../Business/Business.csproj",
+      "msbuildProject": "../Business/Business.csproj"
+    },
+    "DataContext/1.0.0": {
+      "type": "project",
+      "path": "../DataContext/DataContext.csproj",
+      "msbuildProject": "../DataContext/DataContext.csproj"
+    },
+    "Entities/1.0.0": {
+      "type": "project",
+      "path": "../Entities/Entities.csproj",
+      "msbuildProject": "../Entities/Entities.csproj"
+    },
+    "Utilities/1.0.0": {
+      "type": "project",
+      "path": "../Utilities/Utilities.csproj",
+      "msbuildProject": "../Utilities/Utilities.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "Business >= 1.0.0",
+      "Utilities >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/Users/rufat/.nuget/packages/": {}
@@ -32,7 +103,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Business/Business.csproj": {
+              "projectPath": "/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Business/Business.csproj"
+            },
+            "/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Utilities/Utilities.csproj": {
+              "projectPath": "/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Utilities/Utilities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -11,4 +11,8 @@
   <ItemGroup>
     <Folder Include="Controller\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj" />
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
+  </ItemGroup>
 </Project>

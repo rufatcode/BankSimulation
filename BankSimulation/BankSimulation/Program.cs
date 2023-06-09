@@ -1,4 +1,5 @@
 ﻿using System;
+using Utilities;
 
 namespace BankSimulation
 {
@@ -20,7 +21,17 @@ namespace BankSimulation
             edilse 1.5 azn komisiya cixacaq basqa valyutadan odenis edilse 2 azn xidmet haqqi tutulur usd,eur,azn mumkundu valyuta olaraq
              
              */
-            Console.WriteLine("Hello World!");
+            Helper.SetMessageAndColor("Welcome", ConsoleColor.Yellow);
+            while (true)
+            {
+                Helper.SetMessageAndColor(@"
+                                            1-Create Bank
+                                            2-Delete Bank
+                                            3-Update Bank
+                                            4-GetAllBank
+                                            5-GetBankById
+                                            6-GetBankByName", ConsoleColor.Blue);
+            }
         }
     }
 }

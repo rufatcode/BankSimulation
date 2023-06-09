@@ -12,4 +12,7 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataContext\DataContext.csproj" />
+  </ItemGroup>
 </Project>

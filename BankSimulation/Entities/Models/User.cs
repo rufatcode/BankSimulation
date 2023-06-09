@@ -14,7 +14,7 @@ namespace Entities.Models
 		public int Pin { get; set; }
 		public DateTime ActivityDate { get; set; }
 		public string Phone { get; set; }
-
+		public Bank Bank { get; set; }
 		public User()
 		{
 			

@@ -14,6 +14,7 @@ namespace Entities.Models
 
 		public Bank()
 		{
+			Users = new List<User>();
             OriginHistiry = DateTime.Now;
 		}
 	}
