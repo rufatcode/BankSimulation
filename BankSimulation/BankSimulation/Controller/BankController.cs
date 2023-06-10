@@ -15,12 +15,15 @@ namespace BankSimulation.Controller
 	}
 	enum BankChoice
 	{
-		CreateBank,
+		CreateBank=1,
 		DeleteBank,
 		UpdateBank,
 		GetAllBank,
 		GetBankById,
 		GetBankByName,
+		GetAllMemberByName,
+		GetAllBanksAndMembersAdmin,
+		GetAllMembersAdmin
 	}
 }
 

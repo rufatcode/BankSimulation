@@ -12,3 +12,12 @@
 /Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/obj/Debug/netcoreapp3.1/BankSimulation.dll
 /Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/obj/Debug/netcoreapp3.1/BankSimulation.pdb
 /Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/obj/Debug/netcoreapp3.1/BankSimulation.genruntimeconfig.cache
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/bin/Debug/netcoreapp3.1/Business.dll
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/bin/Debug/netcoreapp3.1/DataContext.dll
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/bin/Debug/netcoreapp3.1/Entities.dll
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/bin/Debug/netcoreapp3.1/Utilities.dll
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/bin/Debug/netcoreapp3.1/Business.pdb
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/bin/Debug/netcoreapp3.1/Utilities.pdb
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/bin/Debug/netcoreapp3.1/DataContext.pdb
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/bin/Debug/netcoreapp3.1/Entities.pdb
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/BankSimulation/obj/Debug/netcoreapp3.1/BankSimulation.csproj.CopyComplete

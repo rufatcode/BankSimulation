@@ -1,0 +1,10 @@
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/bin/Debug/netcoreapp3.1/Entities.deps.json
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/bin/Debug/netcoreapp3.1/Entities.dll
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/bin/Debug/netcoreapp3.1/Entities.pdb
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/obj/Debug/netcoreapp3.1/Entities.csproj.AssemblyReference.cache
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/obj/Debug/netcoreapp3.1/Entities.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/obj/Debug/netcoreapp3.1/Entities.AssemblyInfoInputs.cache
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/obj/Debug/netcoreapp3.1/Entities.AssemblyInfo.cs
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/obj/Debug/netcoreapp3.1/Entities.csproj.CoreCompileInputs.cache
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/obj/Debug/netcoreapp3.1/Entities.dll
+/Volumes/Mac/C#/BankSimulationC#EndProject/BankSimulation/Entities/obj/Debug/netcoreapp3.1/Entities.pdb

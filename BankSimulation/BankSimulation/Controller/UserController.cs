@@ -7,5 +7,18 @@ namespace BankSimulation.Controller
 		{
 		}
 	}
+    enum UserChoice
+    {
+        CreateUser=10,
+        DeleteUser,
+        UpdateUser,
+        GetAllUser,
+        GetUserById,
+        GetUserByName,
+        CashIn,
+        CachOut,
+        SendMoneyToUser,
+        GetUserByCartNumbers
+    }
 }
 

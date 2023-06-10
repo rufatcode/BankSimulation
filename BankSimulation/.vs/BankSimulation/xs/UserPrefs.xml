@@ -1,23 +1,25 @@
 ﻿<Properties StartupConfiguration="{89E2EFF6-E724-4E01-9310-EBCC74317BF8}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.BankSimulation PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.ItemProperties.Utilities FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.Entities FirstBuild="True" />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.DataContext FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Business/Services/BankService.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Entities/Interfaces/IEntity.cs">
     <Files>
-      <File FileName="BankSimulation/Program.cs" />
-      <File FileName="DataContext/DbContext.cs" />
-      <File FileName="DataContext/Repository/BankRepository.cs" Line="9" Column="29" />
-      <File FileName="DataContext/Interfaces/IRepository.cs" Line="1" Column="1" />
-      <File FileName="DataContext/Repository/UserRepository.cs" />
-      <File FileName="Business/Interfaces/IBank.cs" Line="13" Column="30" />
-      <File FileName="Business/Services/BankService.cs" Line="9" Column="3" />
+      <File FileName="BankSimulation/Program.cs" Line="29" Column="58" />
+      <File FileName="DataContext/Interfaces/IRepository.cs" Line="13" Column="35" />
+      <File FileName="Entities/Models/Bank.cs" Line="17" Column="29" />
+      <File FileName="Entities/Models/User.cs" Line="17" Column="33" />
+      <File FileName="Entities/Interfaces/IEntity.cs" Line="1" Column="1" />
+      <File FileName="Business/Interfaces/IUser.cs" Line="14" Column="25" />
+      <File FileName="DataContext/Repository/BankRepository.cs" Line="11" Column="24" />
+      <File FileName="Business/Services/BankService.cs" Line="9" Column="26" />
+      <File FileName="Business/Interfaces/IBank.cs" Line="1" Column="1" />
+      <File FileName="BankSimulation/Controller/BankController.cs" Line="23" Column="17" />
+      <File FileName="DataContext/DbContext.cs" Line="1" Column="1" />
+      <File FileName="Utilities/Helper.cs" Line="10" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,9 +30,7 @@
             </Node>
             <Node name="Business" expanded="True">
               <Node name="Interfaces" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="BankService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
             <Node name="DataContext" expanded="True">
               <Node name="Interfaces" expanded="True" />
@@ -40,10 +40,10 @@
               <Node name="Interfaces" expanded="True" />
               <Node name="Models" expanded="True" />
             </Node>
+            <Node name="Utilities" expanded="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Business FirstBuild="True" />
 </Properties>

@@ -1,4 +1,5 @@
 ﻿using System;
+using BankSimulation.Controller;
 using Utilities;
 
 namespace BankSimulation
@@ -25,12 +26,64 @@ namespace BankSimulation
             while (true)
             {
                 Helper.SetMessageAndColor(@"
-                                            1-Create Bank
-                                            2-Delete Bank
-                                            3-Update Bank
-                                            4-GetAllBank
-                                            5-GetBankById
-                                            6-GetBankByName", ConsoleColor.Blue);
+                                            |*|--*---*---*---*---*---*---*---*--|*|-*---*---*---*---*---*---*---*---*---*----|*|
+                                            |*|     Bank Options                |*|           User Options                   |*|
+                                            |*|--*---*---*---*---*--*---*---*---|*|--*---*---*---*---*---*---*---*---*---*---|*|
+                                            |*|   1-Create Bank                 |*|            10-CreateUser                 |*|
+                                            |*|   2-Delete Bank                 |*|            11-DeleteUser                 |*|
+                                            |*|   3-Update Bank                 |*|            12-UpdateUser                 |*|
+                                            |*|   4-GetAllBank                  |*|            13-GetAllUser                 |*|
+                                            |*|   5-GetBankById                 |*|            14-GetUserById                |*|    
+                                            |*|   6-GetBankByName               |*|            15-GetUserByName              |*|
+                                            |*|   7-GetAllMemberByName          |*|            16-CashIn                     |*|
+                                            |*|   8-GetAllBanksAndMembersAdmin  |*|            17-CachOut                    |*|
+                                            |*|   9-GetAllMembersAdmin          |*|            18-SendMoneyToUser            |*|
+                                            |*|   0-exit                        |*|            19-GetUserByCartNumbers       |*|
+                                            |*|---*---*---*---*---*---*---*---*-|*|---*---*---*---*---*---*---*---*---*---*--|*|
+                                            |*|--*---*---*---*---*---*---*---*--|*|-*---*---*---*---*---*---*---*---*---*---*|*|
+                                             ", ConsoleColor.Blue);
+                Select: string stringSelection = Console.ReadLine();
+                int selection;
+                bool isSelected = int.TryParse(stringSelection, out selection);
+                if (isSelected)
+                {
+                    if (selection==0)
+                    {
+                        Helper.SetMessageAndColor("proses is finshed", ConsoleColor.Blue);
+                        break;
+                    }
+                    switch (selection)
+                    {
+                        case (int)BankChoice.CreateBank:
+                            //create bank
+                            break;
+                        case (int)BankChoice.DeleteBank:
+                            //delete
+                            break;
+                        case (int)BankChoice.UpdateBank:
+                            //update
+                            break;
+                        case (int)BankChoice.GetAllBank:
+                            //get all bank
+                            break;
+                        case (int)BankChoice.GetBankById:
+                            //get bank by id
+                            break;
+                        case (int)BankChoice.GetBankByName:
+                            //get bank by name
+                            break;
+                        case (int)BankChoice.GetAllMemberByName:
+                            //get all members
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    Helper.SetMessageAndColor("something went wrong", ConsoleColor.Red);
+                    goto Select;
+                }
             }
         }
     }
