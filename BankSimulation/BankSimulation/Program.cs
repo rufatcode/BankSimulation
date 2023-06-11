@@ -52,36 +52,90 @@ namespace BankSimulation
                         Helper.SetMessageAndColor("proses is finshed", ConsoleColor.Blue);
                         break;
                     }
-                    switch (selection)
+                    if (selection > 0 && selection < 10)
                     {
-                        case (int)BankChoice.CreateBank:
-                            //create bank
-                            break;
-                        case (int)BankChoice.DeleteBank:
-                            //delete
-                            break;
-                        case (int)BankChoice.UpdateBank:
-                            //update
-                            break;
-                        case (int)BankChoice.GetAllBank:
-                            //get all bank
-                            break;
-                        case (int)BankChoice.GetBankById:
-                            //get bank by id
-                            break;
-                        case (int)BankChoice.GetBankByName:
-                            //get bank by name
-                            break;
-                        case (int)BankChoice.GetAllMemberByName:
-                            //get all members
-                            break;
-                        default:
-                            break;
+
+
+                        switch (selection)
+                        {
+                            case (int)BankChoice.CreateBank:
+                                //create bank
+                                break;
+                            case (int)BankChoice.DeleteBank:
+                                //delete
+                                break;
+                            case (int)BankChoice.UpdateBank:
+                                //update
+                                break;
+                            case (int)BankChoice.GetAllBank:
+                                //get all bank
+                                break;
+                            case (int)BankChoice.GetBankById:
+                                //get bank by id
+                                break;
+                            case (int)BankChoice.GetBankByName:
+                                //get bank by name
+                                break;
+                            case (int)BankChoice.GetAllMemberByName:
+                                //get all members by bank name
+                                break;
+                            case (int)BankChoice.GetAllBanksAndMembersAdmin:
+                                //get all banks and members by admin
+                                break;
+                            case (int)BankChoice.GetAllMembersAdmin:
+                                //get all members Admin
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else if (selection>9&&selection<19)
+                    {
+                        switch (selection)
+                        {
+                            case (int)UserChoice.CreateUser:
+                                //create user
+                                break;
+                            case (int)UserChoice.DeleteUser:
+                                //delete user
+                                break;
+                            case (int)UserChoice.UpdateUser:
+                                //update user
+                                break;
+                            case (int)UserChoice.GetAllUser:
+                                //get all user
+                                break;
+                            case (int)UserChoice.GetUserById:
+                                //get user by name
+                                break;
+                            case (int)UserChoice.GetUserByName:
+                                //get user by name
+                                break;
+                            case (int)UserChoice.CashIn:
+                                //cash in
+                                break;
+                            case (int)UserChoice.CachOut:
+                                //cash out
+                                break;
+                            case (int)UserChoice.SendMoneyToUser:
+                                //cart to cart proses
+                                break;
+                            case (int)UserChoice.GetUserByCartNumbers:
+                                //get user by 16 digits cart numbers
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Helper.SetMessageAndColor("enter correct option:", ConsoleColor.Red);
                     }
                 }
                 else
                 {
                     Helper.SetMessageAndColor("something went wrong", ConsoleColor.Red);
+                    Helper.SetMessageAndColor("enter correct number:", ConsoleColor.Blue);
                     goto Select;
                 }
             }
