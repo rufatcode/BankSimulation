@@ -9,7 +9,7 @@ namespace Entities.Models
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public string Signature { get; set; }
-		private DateTime OriginHistiry { get; set; }
+		public DateTime OriginHistiry { get;  }
 		public List<User> Users { get; set; }
 
 		public Bank()

@@ -12,6 +12,7 @@ namespace Business.Interfaces
 		public Bank GetById(int id);
 		public Bank GetByName(string name);
 		public List<Bank> GetAll();
-	}
+
+    }
 }
 

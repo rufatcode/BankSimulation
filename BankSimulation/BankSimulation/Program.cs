@@ -23,6 +23,7 @@ namespace BankSimulation
              
              */
             Helper.SetMessageAndColor("Welcome", ConsoleColor.Yellow);
+            BankController bankController = new BankController();
             while (true)
             {
                 Helper.SetMessageAndColor(@"
@@ -39,9 +40,11 @@ namespace BankSimulation
                                             |*|   8-GetAllBanksAndMembersAdmin  |*|            17-CachOut                    |*|
                                             |*|   9-GetAllMembersAdmin          |*|            18-SendMoneyToUser            |*|
                                             |*|   0-exit                        |*|            19-GetUserByCartNumbers       |*|
+                                            |*|   -----------                   |*|            20-Deposite                   |*|
                                             |*|---*---*---*---*---*---*---*---*-|*|---*---*---*---*---*---*---*---*---*---*--|*|
                                             |*|--*---*---*---*---*---*---*---*--|*|-*---*---*---*---*---*---*---*---*---*---*|*|
                                              ", ConsoleColor.Blue);
+                Helper.SetMessageAndColor("you can choose these options", ConsoleColor.Blue);
                 Select: string stringSelection = Console.ReadLine();
                 int selection;
                 bool isSelected = int.TryParse(stringSelection, out selection);
@@ -59,22 +62,22 @@ namespace BankSimulation
                         switch (selection)
                         {
                             case (int)BankChoice.CreateBank:
-                                //create bank
+                                bankController.Create();
                                 break;
                             case (int)BankChoice.DeleteBank:
-                                //delete
+                                bankController.Create();
                                 break;
                             case (int)BankChoice.UpdateBank:
                                 //update
                                 break;
                             case (int)BankChoice.GetAllBank:
-                                //get all bank
+                                bankController.GetAll();
                                 break;
                             case (int)BankChoice.GetBankById:
-                                //get bank by id
+                                bankController.GetById();
                                 break;
                             case (int)BankChoice.GetBankByName:
-                                //get bank by name
+                                bankController.GetByName();
                                 break;
                             case (int)BankChoice.GetAllMemberByName:
                                 //get all members by bank name
