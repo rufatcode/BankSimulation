@@ -44,6 +44,21 @@ namespace Business.Services
             return bankRepository.GetAll();
         }
 
+        public List<Bank> GetAllBanksAndMembersAdmin()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> GetAllMemberByName(string bankName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> GetAllMembersAdmin()
+        {
+            throw new NotImplementedException();
+        }
+
         public Bank GetById(int id)
         {
             return bankRepository.Get(x => x.Id == id);

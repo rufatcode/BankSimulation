@@ -24,7 +24,7 @@ namespace BankSimulation.Controller
 			
 			foreach (var item in banks)
 			{
-				if (bankSignature==item.Signature||regex.IsMatch(item.Name))
+				if (bankSignature==item.Signature)
 				{
 					Helper.SetMessageAndColor($"this siganure was belog to {item.Name} company", ConsoleColor.Red);
 					Helper.SetMessageAndColor("please choose unique signature:", ConsoleColor.Blue);
@@ -37,7 +37,7 @@ namespace BankSimulation.Controller
                     goto CheckName;
                 }
             }
-            if (bankSignature[4] != ' '||bankSignature.Length!=9)
+            if (bankSignature.Length != 9 || bankSignature[4]!=' ')
             {
                 Helper.SetMessageAndColor("some thing went wrong correct format \"xxxx xxxx\"", ConsoleColor.Red);
                 goto Signature;
@@ -114,7 +114,7 @@ namespace BankSimulation.Controller
 				Helper.SetMessageAndColor("company is not valid:", ConsoleColor.Red);
 				return;
 			}
-			Helper.SetMessageAndColor($"/nCompany  Id:{bank.Id}/nCompany Name:{bank.Name}\nCompany signature:{bank.Signature}\nCmpany was aveliable from  {bank.OriginHistiry}\n", ConsoleColor.Cyan);
+			Helper.SetMessageAndColor($"\nCompany  Id:{bank.Id}\nCompany Name:{bank.Name}\nCompany signature:{bank.Signature}\nCmpany was aveliable from  {bank.OriginHistiry}\n", ConsoleColor.Cyan);
 		}
 		public void GetByName()
 		{
@@ -126,7 +126,7 @@ namespace BankSimulation.Controller
 				Helper.SetMessageAndColor("Company is not valid", ConsoleColor.Red);
 				return;
 			}
-            Helper.SetMessageAndColor($"/nCompany  Id:{bank.Id}/nCompany Name:{bank.Name}\nCompany signature:{bank.Signature}\nCmpany was aveliable from  {bank.OriginHistiry}\n", ConsoleColor.Cyan);
+            Helper.SetMessageAndColor($"\nCompany  Id:{bank.Id}\nCompany Name:{bank.Name}\nCompany signature:{bank.Signature}\nCmpany was aveliable from  {bank.OriginHistiry}\n", ConsoleColor.Cyan);
         }
 		
 	}

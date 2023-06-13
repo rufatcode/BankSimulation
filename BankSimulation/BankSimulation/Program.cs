@@ -40,7 +40,8 @@ namespace BankSimulation
                                             |*|   8-GetAllBanksAndMembersAdmin  |*|            17-CachOut                    |*|
                                             |*|   9-GetAllMembersAdmin          |*|            18-SendMoneyToUser            |*|
                                             |*|   0-exit                        |*|            19-GetUserByCartNumbers       |*|
-                                            |*|   -----------                   |*|            20-Deposite                   |*|
+                                            |*|   -----------                   |*|            20-PinOpenBlock               |*|
+                                            |*|   -----------                   |*|            21-Deposite                   |*|
                                             |*|---*---*---*---*---*---*---*---*-|*|---*---*---*---*---*---*---*---*---*---*--|*|
                                             |*|--*---*---*---*---*---*---*---*--|*|-*---*---*---*---*---*---*---*---*---*---*|*|
                                              ", ConsoleColor.Blue);
@@ -65,7 +66,7 @@ namespace BankSimulation
                                 bankController.Create();
                                 break;
                             case (int)BankChoice.DeleteBank:
-                                bankController.Create();
+                                bankController.Delete();
                                 break;
                             case (int)BankChoice.UpdateBank:
                                 //update
