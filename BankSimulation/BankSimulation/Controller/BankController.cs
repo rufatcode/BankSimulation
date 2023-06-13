@@ -140,7 +140,8 @@ namespace BankSimulation.Controller
 		GetBankByName,
 		GetAllMemberByName,
 		GetAllBanksAndMembersAdmin,
-		GetAllMembersAdmin
+		GetAllMembersAdmin,
+		UpdateAdminProfile
 	}
 }
 

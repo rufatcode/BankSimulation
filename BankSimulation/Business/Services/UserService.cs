@@ -9,14 +9,63 @@ namespace Business.Services
 	public class UserService:IUser
 	{
         private readonly UserRepository userRepository;
+        private readonly BankService bankService;
+        private static int _count = 1;
         public UserService()
 		{
+            bankService = new BankService();
             userRepository = new UserRepository();
 		}
         public User Create(User user)
         {
+            try
+            {
+                user.Id = _count;
+                var users = GetAll();
+                Random random = new Random();
 
-            throw new NotImplementedException();
+
+                while (user.cartNumbers == null)
+                {
+                    int cartNumberpart1 = random.Next(1000, 10000);
+                    int cartNumberpart2 = random.Next(1000, 10000);
+                    user.cartNumbers += user.Bank.Signature + " " + cartNumberpart1 + " " + cartNumberpart2;
+                    foreach (var item in users)
+                    {
+                        if (user.cartNumbers == item.cartNumbers)
+                        {
+                            user.cartNumbers = null;
+                            break;
+                        }
+                    }
+                }
+                while (user.Cvv == null)
+                {
+                    user.Cvv = Convert.ToString(random.Next(100, 1000));
+                    foreach (var item in users)
+                    {
+                        if (user.Cvv == item.Cvv)
+                        {
+                            user.Cvv = null;
+                            break;
+                        }
+                    }
+                }
+                user.ActivityDate = DateTime.Now.AddYears(5);
+                if (GetById(user.Id) == null)
+                {
+                    userRepository.Create(user);
+                    bankService.GetById(user.Bank.Id).Users.Add(user);
+                    _count++;
+                    return user;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
 
@@ -56,7 +105,23 @@ namespace Business.Services
 
         public User Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var deletedUser = GetById(id);
+                if (deletedUser == null)
+                {
+                    return null;
+                }
+                bankService.GetById(deletedUser.Bank.Id).Users.Remove(deletedUser);
+                userRepository.Delete(deletedUser);
+                return deletedUser;
+                
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         public bool Deposite(User user, int deposite)
@@ -130,7 +195,7 @@ namespace Business.Services
             
         }
 
-        public bool PinOpenBlock(User user, int newPin)
+        public bool PinOpenBlock(User user, string newPin)
         {
             try
             {
@@ -163,6 +228,11 @@ namespace Business.Services
         }
 
         public User Update(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Get(User user)
         {
             throw new NotImplementedException();
         }

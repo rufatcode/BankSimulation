@@ -10,8 +10,8 @@ namespace Entities.Models
 		public int Balance { get; set; }
         public string Name { get; set; }
 		public string SureName { get; set; }
-		public int Cvv { get; set; }
-		public int Pin { get; set; }
+		public string Cvv { get; set; }
+		public string Pin { get; set; }
 		public string cartNumbers { get; set; }
 		public DateTime ActivityDate { get; set; }
 		public string Phone { get; set; }

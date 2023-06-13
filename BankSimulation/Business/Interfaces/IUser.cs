@@ -17,7 +17,8 @@ namespace Business.Interfaces
         public bool SendMoneyToUser(User from, User to, int ammount);
         public User GetUserByCartNumbers(string cartNumbers);
         public bool Deposite(User user, int deposite);
-        public bool PinOpenBlock(User user, int newPin);
+        public bool PinOpenBlock(User user, string newPin);
+        public bool Get(User user);
 
 
     }

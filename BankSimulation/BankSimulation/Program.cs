@@ -24,24 +24,26 @@ namespace BankSimulation
              */
             Helper.SetMessageAndColor("Welcome", ConsoleColor.Yellow);
             BankController bankController = new BankController();
+            UserController userController = new UserController();
             while (true)
             {
                 Helper.SetMessageAndColor(@"
                                             |*|--*---*---*---*---*---*---*---*--|*|-*---*---*---*---*---*---*---*---*---*----|*|
                                             |*|     Bank Options                |*|           User Options                   |*|
                                             |*|--*---*---*---*---*--*---*---*---|*|--*---*---*---*---*---*---*---*---*---*---|*|
-                                            |*|   1-Create Bank                 |*|            10-CreateUser                 |*|
-                                            |*|   2-Delete Bank                 |*|            11-DeleteUser                 |*|
-                                            |*|   3-Update Bank                 |*|            12-UpdateUser                 |*|
-                                            |*|   4-GetAllBank                  |*|            13-GetAllUser                 |*|
-                                            |*|   5-GetBankById                 |*|            14-GetUserById                |*|    
-                                            |*|   6-GetBankByName               |*|            15-GetUserByName              |*|
-                                            |*|   7-GetAllMemberByName          |*|            16-CashIn                     |*|
-                                            |*|   8-GetAllBanksAndMembersAdmin  |*|            17-CachOut                    |*|
-                                            |*|   9-GetAllMembersAdmin          |*|            18-SendMoneyToUser            |*|
-                                            |*|   0-exit                        |*|            19-GetUserByCartNumbers       |*|
-                                            |*|   -----------                   |*|            20-PinOpenBlock               |*|
-                                            |*|   -----------                   |*|            21-Deposite                   |*|
+                                            |*|   1-Create Bank                 |*|            11-CreateUser                 |*|
+                                            |*|   2-Delete Bank                 |*|            12-DeleteUser                 |*|
+                                            |*|   3-Update Bank                 |*|            13-UpdateUser                 |*|
+                                            |*|   4-GetAllBank                  |*|            14-GetAllUser                 |*|
+                                            |*|   5-GetBankById                 |*|            15-GetUserById                |*|    
+                                            |*|   6-GetBankByName               |*|            16-GetUserByName              |*|
+                                            |*|   7-GetAllMemberByName          |*|            17-CashIn                     |*|
+                                            |*|   8-GetAllBanksAndMembersAdmin  |*|            18-CachOut                    |*|
+                                            |*|   9-GetAllMembersAdmin          |*|            19-SendMoneyToUser            |*|
+                                            |*|   10-update admin infos         |*|            20-GetUserByCartNumbers       |*|
+                                            |*|   0-Exit                        |*|            21-PinOpenBlock               |*|
+                                            |*|   -----------                   |*|            22-Deposite                   |*|
+                                            |*|   -----------                   |*|            23-Get your personal account  |*|
                                             |*|---*---*---*---*---*---*---*---*-|*|---*---*---*---*---*---*---*---*---*---*--|*|
                                             |*|--*---*---*---*---*---*---*---*--|*|-*---*---*---*---*---*---*---*---*---*---*|*|
                                              ", ConsoleColor.Blue);
@@ -56,7 +58,7 @@ namespace BankSimulation
                         Helper.SetMessageAndColor("proses is finshed", ConsoleColor.Blue);
                         break;
                     }
-                    if (selection > 0 && selection < 10)
+                    if (selection > 0 && selection < 11)
                     {
 
 
@@ -93,21 +95,21 @@ namespace BankSimulation
                                 break;
                         }
                     }
-                    else if (selection>9&&selection<19)
+                    else if (selection>10&&selection<24)
                     {
                         switch (selection)
                         {
                             case (int)UserChoice.CreateUser:
-                                //create user
+                                userController.Create();
                                 break;
                             case (int)UserChoice.DeleteUser:
-                                //delete user
+                                userController.Delete();
                                 break;
                             case (int)UserChoice.UpdateUser:
                                 //update user
                                 break;
                             case (int)UserChoice.GetAllUser:
-                                //get all user
+                                userController.GetAll();
                                 break;
                             case (int)UserChoice.GetUserById:
                                 //get user by name
@@ -126,6 +128,15 @@ namespace BankSimulation
                                 break;
                             case (int)UserChoice.GetUserByCartNumbers:
                                 //get user by 16 digits cart numbers
+                                break;
+                            case (int)UserChoice.PinOpenBlock:
+                                //user pin open block
+                                break;
+                            case (int)UserChoice.Deposite:
+                                //deposite
+                                break;
+                            case (int)UserChoice.GetAccount:
+                                userController.GetMyAccount();
                                 break;
                             default:
                                 break;
