@@ -13,6 +13,7 @@ namespace BankSimulation.Controller
         private readonly BankController bankController;
         private readonly BankService bankService;
         private readonly UserRepository userRepository;
+        private static int pinAttemp { get; set; } = 0;
         public UserController()
 		{
             userService = new UserService();
@@ -136,9 +137,29 @@ namespace BankSimulation.Controller
             string name = Console.ReadLine();
             Helper.SetMessageAndColor("enter Surename ", ConsoleColor.Blue);
             string sureName = Console.ReadLine();
+            var user = userRepository.Get(x => x.Name.ToLower() == name.ToLower() && x.SureName.ToLower() == sureName.ToLower());
+            if (user==null)
+            {
+                Helper.SetMessageAndColor("invalid Name or Surename", ConsoleColor.Red);
+                return;
+            }
             Helper.SetMessageAndColor("enter personal Pin ", ConsoleColor.Blue);
-            string pin = Console.ReadLine();
-            var user = userRepository.Get(x => x.Name.ToLower() == name.ToLower() && x.SureName.ToLower() == sureName.ToLower() && x.Pin == pin);
+            CheckPin: string pin = Console.ReadLine();
+            if (user.Pin!=pin)
+            {
+                if (pinAttemp<3)
+                {
+                    pinAttemp++;
+                    Helper.SetMessageAndColor("pin is not correct", ConsoleColor.Red);
+                    goto CheckPin;
+                }
+                else if (pinAttemp==3)
+                {
+                    Helper.SetMessageAndColor("your cart account was blocked:", ConsoleColor.Red);
+                    user.PinBlocked = true;
+                }
+            }
+            pinAttemp = 0;
             if (user == null)
             {
                 Helper.SetMessageAndColor("user is not belong to you:", ConsoleColor.Red);
