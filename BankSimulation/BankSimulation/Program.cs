@@ -42,8 +42,7 @@ namespace BankSimulation
                                             |*|   9-GetAllMembersAdmin          |*|            19-SendMoneyToUser            |*|
                                             |*|   10-update admin infos         |*|            20-GetUserByCartNumbers       |*|
                                             |*|   0-Exit                        |*|            21-PinOpenBlock               |*|
-                                            |*|   -----------                   |*|            22-Deposite                   |*|
-                                            |*|   -----------                   |*|            23-Get your personal account  |*|
+                                            |*|   -----------                   |*|            22-Get your personal account  |*|
                                             |*|---*---*---*---*---*---*---*---*-|*|---*---*---*---*---*---*---*---*---*---*--|*|
                                             |*|--*---*---*---*---*---*---*---*--|*|-*---*---*---*---*---*---*---*---*---*---*|*|
                                              ", ConsoleColor.Blue);
@@ -92,6 +91,7 @@ namespace BankSimulation
                                 //get all members Admin
                                 break;
                             default:
+                                Helper.SetMessageAndColor("something went wrong:", ConsoleColor.Red);
                                 break;
                         }
                     }
@@ -124,21 +124,19 @@ namespace BankSimulation
                                 userController.CashOut();
                                 break;
                             case (int)UserChoice.SendMoneyToUser:
-                                //cart to cart proses
+                                userController.SendMoneyToUser();
                                 break;
                             case (int)UserChoice.GetUserByCartNumbers:
-                                //get user by 16 digits cart numbers
+                                userController.GetUserByCartNumbers();
                                 break;
                             case (int)UserChoice.PinOpenBlock:
-                                //user pin open block
-                                break;
-                            case (int)UserChoice.Deposite:
-                                //deposite
+                                userController.PinOpenBlock();
                                 break;
                             case (int)UserChoice.GetAccount:
                                 userController.GetMyAccount();
                                 break;
                             default:
+                                Helper.SetMessageAndColor("something went wrong:", ConsoleColor.Red);
                                 break;
                         }
                     }

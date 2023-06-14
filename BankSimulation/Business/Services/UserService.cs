@@ -73,6 +73,10 @@ namespace Business.Services
         {
             try
             {
+                if (ammount<=0)
+                {
+                    return false;
+                }
                 user.Balance += ammount;
                 return true;
             }
@@ -88,7 +92,7 @@ namespace Business.Services
            
             try
             {
-                if (user.Balance < ammount)
+                if (user.Balance < ammount||ammount<=0)
                 {
                     return false;
                 }
@@ -160,7 +164,12 @@ namespace Business.Services
         {
             try
             {
-                return userRepository.Get(x => x.Id == id);
+                var user= userRepository.Get(x => x.Id == id);
+                if (user==null)
+                {
+                    return null;
+                }
+                return user;
             }
             catch (Exception ex)
             {
@@ -173,7 +182,12 @@ namespace Business.Services
         {
             try
             {
-                return userRepository.Get(x => x.Name.ToLower() == name.ToLower());
+                var user= userRepository.Get(x => x.Name.ToLower() == name.ToLower());
+                if (user==null)
+                {
+                    return null;
+                }
+                return user;
             }
             catch (Exception ex)
             {
@@ -186,7 +200,12 @@ namespace Business.Services
         {
             try
             {
-                return userRepository.Get(x => x.cartNumbers == cartNumbers);
+                var user= userRepository.Get(x => x.cartNumbers == cartNumbers);
+                if (user==null)
+                {
+                    return null;
+                }
+                return user;
             }
             catch (Exception ex)
             {
@@ -199,7 +218,7 @@ namespace Business.Services
         {
             try
             {
-                user.PinBlocked = true;
+                user.PinBlocked = false;
                 user.Pin = newPin;
                 return true;
             }
@@ -209,15 +228,15 @@ namespace Business.Services
             }
         }
 
-        public bool SendMoneyToUser(User from, User to, int ammount)
+        public bool SendMoneyToUser(User from, User to, double ammount)
         {
             try
             {
-                if (ammount>from.Balance)
+                if (ammount>from.Balance||ammount<=0)
                 {
                     return false;
                 }
-                to.Balance += from.Balance + ammount;
+                to.Balance += ammount;
                 from.Balance -= ammount;
                 return true;
             }
@@ -232,10 +251,6 @@ namespace Business.Services
             throw new NotImplementedException();
         }
 
-        public bool Get(User user)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

@@ -10,10 +10,12 @@ namespace Entities.Models
 		public string Name { get; set; }
 		public string Signature { get; set; }
 		public DateTime OriginHistiry { get;  }
-		public List<User> Users { get; set; }
+        public List<int> Rates { get; set; }
+        public List<User> Users { get; set; }
 
 		public Bank()
 		{
+			Rates = new List<int>();
 			Users = new List<User>();
             OriginHistiry = DateTime.Now;
 		}
