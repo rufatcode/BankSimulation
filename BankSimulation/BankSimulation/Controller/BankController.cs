@@ -209,7 +209,7 @@ namespace BankSimulation.Controller
 				{
 					foreach (var user in item.Users)
 					{
-						if (user.PinBlocked == true)
+						if (user.PinBlocked)
 						{
 							Helper.SetMessageAndColor($"\nDeactive: Id:{user.Id}  {user.Bank.Name} Bank Company {user.Name} {user.SureName}\n{user.cartNumbers} {user.ActivityDate} Cvv:{user.Cvv} Pin:{user.Pin}\nPhone:{user.Phone}\n", ConsoleColor.Cyan);
 						}

@@ -239,7 +239,7 @@ namespace BankSimulation.Controller
                 Helper.SetMessageAndColor("user is not belong to you:", ConsoleColor.Red);
                 return;
             }
-            if (user.PinBlocked==false)
+            if (!user.PinBlocked)
             {
                 Helper.SetMessageAndColor($"\n{user.Bank.Name} Bank cart:\n Account is Active\n{user.Name} {user.SureName}\nBalance:{user.Balance}\n{user.cartNumbers}\nPin:{user.Pin} Cvv:{user.Cvv}\n{user.ActivityDate}\nPhone Number:{user.Phone}", ConsoleColor.Yellow);
                 return;
@@ -305,7 +305,7 @@ namespace BankSimulation.Controller
                 Helper.SetMessageAndColor("invalid Name or Surename", ConsoleColor.Red);
                 return;
             }
-            else if (user.PinBlocked==true)
+            else if (user.PinBlocked)
             {
                 Helper.SetMessageAndColor("your cart account was blocked:", ConsoleColor.Red);
                 return;
@@ -333,7 +333,7 @@ namespace BankSimulation.Controller
                 Helper.SetMessageAndColor("user is not belong to you:", ConsoleColor.Red);
                 return;
             }
-            else if (user.PinBlocked==true)
+            else if (user.PinBlocked)
             {
                 Helper.SetMessageAndColor("Your pin code would be blocked",ConsoleColor.Red);
                 Helper.SetMessageAndColor("It is recommended that you approach the service", ConsoleColor.Yellow);
@@ -409,7 +409,7 @@ namespace BankSimulation.Controller
                 Helper.SetMessageAndColor("invalid Name or Surename", ConsoleColor.Red);
                 return;
             }
-            else if (user.PinBlocked == true)
+            else if (user.PinBlocked)
             {
                 Helper.SetMessageAndColor("your cart account was blocked:", ConsoleColor.Red);
                 return;
@@ -437,7 +437,7 @@ namespace BankSimulation.Controller
                 Helper.SetMessageAndColor("user is not belong to you:", ConsoleColor.Red);
                 return;
             }
-            else if (user.PinBlocked == true)
+            else if (user.PinBlocked)
             {
                 Helper.SetMessageAndColor("Your pin code would be blocked", ConsoleColor.Red);
                 Helper.SetMessageAndColor("It is recommended that you approach the service", ConsoleColor.Yellow);
@@ -501,7 +501,7 @@ namespace BankSimulation.Controller
                 Helper.SetMessageAndColor("invalid Name or Surename", ConsoleColor.Red);
                 return;
             }
-            else if (user.PinBlocked == true)
+            else if (user.PinBlocked )
             {
                 Helper.SetMessageAndColor("your card account was blocked:", ConsoleColor.Red);
                 return;
@@ -529,7 +529,7 @@ namespace BankSimulation.Controller
                 Helper.SetMessageAndColor("user is not belong to you:", ConsoleColor.Red);
                 return;
             }
-            else if (user.PinBlocked == true)
+            else if (user.PinBlocked)
             {
                 Helper.SetMessageAndColor("Your pin code would be blocked", ConsoleColor.Red);
                 Helper.SetMessageAndColor("It is recommended that you approach the service", ConsoleColor.Yellow);
@@ -565,7 +565,7 @@ namespace BankSimulation.Controller
                 Helper.SetMessageAndColor("proses has finshed:", ConsoleColor.Cyan);
                 return;
             }
-            else if (toUser.PinBlocked==true)
+            else if (toUser.PinBlocked)
             {
                 Helper.SetMessageAndColor("user card account had been blocked:", ConsoleColor.Red);
                 return;
@@ -626,7 +626,7 @@ namespace BankSimulation.Controller
                 Helper.SetMessageAndColor("user is not found:", ConsoleColor.Red);
                 return;
             }
-            else if (user.PinBlocked==false)
+            else if (!user.PinBlocked)
             {
                 Helper.SetMessageAndColor("your pin code is not blocked", ConsoleColor.Yellow);
                 return;
