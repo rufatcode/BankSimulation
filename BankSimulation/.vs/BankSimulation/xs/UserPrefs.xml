@@ -1,8 +1,7 @@
 ﻿<Properties StartupConfiguration="{89E2EFF6-E724-4E01-9310-EBCC74317BF8}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.BankSimulation PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="BankSimulation/Controller/UserController.cs">
     <Files>
@@ -12,22 +11,25 @@
       <File FileName="Utilities/Helper.cs" />
       <File FileName="Entities/Interfaces/IEntity.cs" />
       <File FileName="DataContext/DbContext.cs" />
-      <File FileName="DataContext/Repository/UserRepository.cs" />
+      <File FileName="DataContext/Repository/UserRepository.cs" Line="1" Column="1" />
       <File FileName="DataContext/Repository/BankRepository.cs" />
       <File FileName="Utilities/Utilities.csproj" />
       <File FileName="Business/Services/UserService.cs" Line="66" Column="23" />
       <File FileName="Entities/Models/Bank.cs" />
       <File FileName="BankSimulation/Controller/BankController.cs" />
       <File FileName="Business/Interfaces/IBank.cs" />
-      <File FileName="Business/Interfaces/IUser.cs" />
-      <File FileName="BankSimulation/Controller/UserController.cs" Line="192" Column="6" />
+      <File FileName="Business/Interfaces/IUser.cs" Line="12" Column="28" />
+      <File FileName="BankSimulation/Controller/UserController.cs" Line="206" Column="50" />
+      <File FileName="DataContext/Interfaces/IRepository.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="BankSimulation" expanded="True">
             <Node name="BankSimulation" expanded="True">
-              <Node name="Controller" expanded="True" selected="True" />
+              <Node name="Controller" expanded="True">
+                <Node name="UserController.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="Business" expanded="True">
               <Node name="Interfaces" expanded="True" />
@@ -47,6 +49,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.BankSimulation PreferredExecutionTarget="MonoDevelop.Default" />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

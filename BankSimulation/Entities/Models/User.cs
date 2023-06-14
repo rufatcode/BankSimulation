@@ -7,7 +7,7 @@ namespace Entities.Models
 	{
 		
 		public int Id { get; set; }
-		public int Balance { get; set; }
+		public double Balance { get; set; }
         public string Name { get; set; }
 		public string SureName { get; set; }
 		public string Cvv { get; set; }

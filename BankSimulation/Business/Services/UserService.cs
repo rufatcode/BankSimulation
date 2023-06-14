@@ -69,12 +69,12 @@ namespace Business.Services
         }
 
 
-        public int CashIn(User user, int ammount)
+        public bool CashIn(User user, double ammount)
         {
             try
             {
                 user.Balance += ammount;
-                return ammount;
+                return true;
             }
             catch (Exception ex)
             {
@@ -83,7 +83,7 @@ namespace Business.Services
             
         }
 
-        public bool CashOut(User user, int ammount)
+        public bool CashOut(User user, double ammount)
         {
            
             try

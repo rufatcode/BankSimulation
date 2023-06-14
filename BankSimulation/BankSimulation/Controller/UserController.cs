@@ -7,7 +7,15 @@ using Utilities;
 
 namespace BankSimulation.Controller
 {
-	public class UserController
+    enum Currency
+    {
+        AZN=1,
+        EUR,
+        USD,
+        TRY
+    }
+
+    public class UserController
 	{
         private readonly UserService userService;
         private readonly BankController bankController;
@@ -172,7 +180,219 @@ namespace BankSimulation.Controller
             }
             Helper.SetMessageAndColor($"\n{user.Bank.Name} bank cart\n Account is  Deactive\n {user.Name} {user.SureName}\nBalance:{user.Balance}\n{user.cartNumbers}\nPin:{user.Pin} Cvv:{user.Cvv}\n{user.ActivityDate}\nPhone Number:{user.Phone}", ConsoleColor.Yellow);
         }
-        
+        public void GetById()
+        {
+            if (userService.GetAll().Count == 0)
+            {
+                Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
+                return;
+            }
+            Helper.SetMessageAndColor("enter id:", ConsoleColor.Blue);
+            CheckId: string stringId = Console.ReadLine();
+            int id;
+            bool isId = int.TryParse(stringId, out id);
+            if (!isId)
+            {
+                Helper.SetMessageAndColor("something went wrong:", ConsoleColor.Red);
+                goto CheckId;
+            }
+            var user = userService.GetById(id);
+            if (user==null)
+            {
+                Helper.SetMessageAndColor("user is not valid:", ConsoleColor.Red);
+                return;
+            }
+            Helper.SetMessageAndColor($"{user.Id} {user.Name} {user.Bank.Name}", ConsoleColor.Cyan);
+        }
+        public void GetByName()
+        {
+            if (userService.GetAll().Count == 0)
+            {
+                Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
+                return;
+            }
+            Helper.SetMessageAndColor("enter Name:", ConsoleColor.Blue);
+            string name = Console.ReadLine();
+            var user = userService.GetByName(name);
+            if (user == null)
+            {
+                Helper.SetMessageAndColor("user is not valid:", ConsoleColor.Red);
+                return;
+            }
+            Helper.SetMessageAndColor($"{user.Id} {user.Name} {user.Bank.Name}", ConsoleColor.Cyan);
+        }
+        public void CashIn()
+        {
+            if (userService.GetAll().Count == 0)
+            {
+                Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
+                return;
+            }
+            Helper.SetMessageAndColor("First name, last name and cvv must be entered for customers safelty:", ConsoleColor.Yellow);
+            Helper.SetMessageAndColor("enter Name ", ConsoleColor.Blue);
+            string name = Console.ReadLine();
+            Helper.SetMessageAndColor("enter Surename ", ConsoleColor.Blue);
+            string sureName = Console.ReadLine();
+            var user = userRepository.Get(x => x.Name.ToLower() == name.ToLower() && x.SureName.ToLower() == sureName.ToLower());
+            if (user == null)
+            {
+                Helper.SetMessageAndColor("invalid Name or Surename", ConsoleColor.Red);
+                return;
+            }
+            else if (user.PinBlocked==true)
+            {
+                Helper.SetMessageAndColor("your cart account was blocked:", ConsoleColor.Red);
+                return;
+            }
+            Helper.SetMessageAndColor("enter personal Pin ", ConsoleColor.Blue);
+        CheckPin: string pin = Console.ReadLine();
+            if (user.Pin != pin)
+            {
+                if (pinAttemp < 3)
+                {
+                    pinAttemp++;
+                    Helper.SetMessageAndColor("pin is not correct", ConsoleColor.Red);
+                    goto CheckPin;
+                }
+                else if (pinAttemp == 3)
+                {
+                    Helper.SetMessageAndColor("your cart account is blocked:", ConsoleColor.Red);
+                    user.PinBlocked = true;
+                    return;
+                }
+            }
+            pinAttemp = 0;
+            if (user == null)
+            {
+                Helper.SetMessageAndColor("user is not belong to you:", ConsoleColor.Red);
+                return;
+            }
+            else if (user.PinBlocked==true)
+            {
+                Helper.SetMessageAndColor("Your pin code would be blocked",ConsoleColor.Red);
+                Helper.SetMessageAndColor("It is recommended that you approach the service", ConsoleColor.Yellow);
+                return;
+            }
+            Helper.SetMessageAndColor("enter ammount which you want to enter to card:", ConsoleColor.Blue);
+            CheckAmmount: string stringAmmount = Console.ReadLine();
+            double ammount;
+            bool isAmmount = double.TryParse(stringAmmount, out ammount);
+            if (!isAmmount)
+            {
+                Helper.SetMessageAndColor("something went wrong:", ConsoleColor.Red);
+                goto CheckAmmount;
+            }
+            Helper.SetMessageAndColor("enter currency :format:\"1->AZN,2->EUR,3->USD,4->TRY\"", ConsoleColor.Blue);
+            Helper.SetMessageAndColor("Service fee for other currencies is 2 Azn", ConsoleColor.Green);
+            CheckCurrency: string stringChoice = Console.ReadLine();
+            int choice;
+            bool isChoice = int.TryParse(stringChoice, out choice);
+            if (!isChoice)
+            {
+                Helper.SetMessageAndColor("something went wrong::", ConsoleColor.Red);
+                goto CheckCurrency;
+            }
+            else if (choice>4||choice<0)
+            {
+                Helper.SetMessageAndColor("press 1 for AZN,press 2 for EUR,press 3 for USD,press 4 for TRY", ConsoleColor.Yellow);
+                goto CheckCurrency;
+            }
+            switch (choice)
+            {
+                case (int)Currency.AZN:
+                    user.Balance += ammount;
+                    Helper.SetMessageAndColor($"{ammount} AZN added your balance:", ConsoleColor.Cyan);
+                    break;
+                case (int)Currency.EUR:
+                    ammount += ammount*2-2;
+                    Helper.SetMessageAndColor($"{ammount} AZN added your balance:", ConsoleColor.Cyan);
+                    break;
+                case (int)Currency.USD:
+                    ammount += ammount*1.7-2;
+                    Helper.SetMessageAndColor($"{ammount} AZN added your balance:", ConsoleColor.Cyan);
+                    break;
+                case (int)Currency.TRY:
+                    ammount += ammount/20-2;
+                    Helper.SetMessageAndColor($"{ammount} AZN added your balance:", ConsoleColor.Cyan);
+                    break;
+                default:
+                    break;
+            }
+            userService.CashIn(user, ammount);
+
+        }
+        public void CashOut()
+        {
+            if (userService.GetAll().Count == 0)
+            {
+                Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
+                return;
+            }
+            Helper.SetMessageAndColor("First name, last name and cvv must be entered for customers safelty:", ConsoleColor.Yellow);
+            Helper.SetMessageAndColor("enter Name ", ConsoleColor.Blue);
+            string name = Console.ReadLine();
+            Helper.SetMessageAndColor("enter Surename ", ConsoleColor.Blue);
+            string sureName = Console.ReadLine();
+            var user = userRepository.Get(x => x.Name.ToLower() == name.ToLower() && x.SureName.ToLower() == sureName.ToLower());
+            if (user == null)
+            {
+                Helper.SetMessageAndColor("invalid Name or Surename", ConsoleColor.Red);
+                return;
+            }
+            else if (user.PinBlocked == true)
+            {
+                Helper.SetMessageAndColor("your cart account was blocked:", ConsoleColor.Red);
+                return;
+            }
+            Helper.SetMessageAndColor("enter personal Pin ", ConsoleColor.Blue);
+        CheckPin: string pin = Console.ReadLine();
+            if (user.Pin != pin)
+            {
+                if (pinAttemp < 3)
+                {
+                    pinAttemp++;
+                    Helper.SetMessageAndColor("pin is not correct", ConsoleColor.Red);
+                    goto CheckPin;
+                }
+                else if (pinAttemp == 3)
+                {
+                    Helper.SetMessageAndColor("your cart account is blocked:", ConsoleColor.Red);
+                    user.PinBlocked = true;
+                    return;
+                }
+            }
+            pinAttemp = 0;
+            if (user == null)
+            {
+                Helper.SetMessageAndColor("user is not belong to you:", ConsoleColor.Red);
+                return;
+            }
+            else if (user.PinBlocked == true)
+            {
+                Helper.SetMessageAndColor("Your pin code would be blocked", ConsoleColor.Red);
+                Helper.SetMessageAndColor("It is recommended that you approach the service", ConsoleColor.Yellow);
+                return;
+            }
+            Helper.SetMessageAndColor("Enter the amount you want to withdraw", ConsoleColor.Blue);
+            CheckAmmount: string stringAmmount = Console.ReadLine();
+            double ammount;
+            bool isAmmount = double.TryParse(stringAmmount, out ammount);
+            if (!isAmmount)
+            {
+                Helper.SetMessageAndColor("something went wrong:", ConsoleColor.Red);
+                goto CheckAmmount;
+            }
+            bool isCashOut= userService.CashOut(user, ammount);
+            if (!isCashOut)
+            {
+                Helper.SetMessageAndColor($"your balance:{user.Balance} AZN", ConsoleColor.Red);
+                Helper.SetMessageAndColor("enter correct ammount:", ConsoleColor.Yellow);
+                goto CheckAmmount;
+            }
+            Helper.SetMessageAndColor($"{ammount}  has been withdrawn from your balance:", ConsoleColor.Cyan);
+        }
+
+
 	}
     enum UserChoice
     {

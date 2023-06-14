@@ -112,16 +112,16 @@ namespace BankSimulation
                                 userController.GetAll();
                                 break;
                             case (int)UserChoice.GetUserById:
-                                //get user by name
+                                userController.GetById();
                                 break;
                             case (int)UserChoice.GetUserByName:
-                                //get user by name
+                                userController.GetByName();
                                 break;
                             case (int)UserChoice.CashIn:
-                                //cash in
+                                userController.CashIn();
                                 break;
                             case (int)UserChoice.CachOut:
-                                //cash out
+                                userController.CashOut();
                                 break;
                             case (int)UserChoice.SendMoneyToUser:
                                 //cart to cart proses
