@@ -246,9 +246,16 @@ namespace Business.Services
             }
         }
 
-        public User Update(int id)
+        public User Update(User user)
         {
-            throw new NotImplementedException();
+            var existUser = userRepository.Get(x => x.Id == user.Id);
+            if (existUser != null)
+            {
+                userRepository.Update(user);
+
+                return user;
+            }
+            return null;
         }
 
     }

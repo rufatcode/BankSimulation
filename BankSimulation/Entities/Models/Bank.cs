@@ -6,7 +6,9 @@ namespace Entities.Models
 {
 	public class Bank:IEntity
 	{
-		public int Id { get; set; }
+        public  string User { get; set; } = "Admin123";
+        public  string Password { get; set; } = "Admin123";
+        public int Id { get; set; }
 		public string Name { get; set; }
 		public string Signature { get; set; }
 		public DateTime OriginHistiry { get;  }

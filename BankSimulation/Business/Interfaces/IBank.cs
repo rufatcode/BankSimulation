@@ -8,13 +8,13 @@ namespace Business.Interfaces
 	{
 		public Bank Create(Bank bank);
 		public Bank Delete(int id);
-		public Bank Update(int id);
+		public Bank Update(Bank bank);
 		public Bank GetById(int id);
 		public Bank GetByName(string name);
 		public List<Bank> GetAll();
 		public List<User> GetAllMemberByName(string bankName);
 		public List<Bank> GetAllBanksAndMembersAdmin();
-		public List<User> GetAllMembersAdmin();
+		public List<Bank> GetAllMembersAdmin();
 
 
     }

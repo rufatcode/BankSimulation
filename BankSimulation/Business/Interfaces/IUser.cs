@@ -8,7 +8,7 @@ namespace Business.Interfaces
 	{
         public User Create(User user);
         public User Delete(int id);
-        public User Update(int id);
+        public User Update(User user);
         public User GetById(int id);
         public User GetByName(string name);
         public List<User> GetAll();

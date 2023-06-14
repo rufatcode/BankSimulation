@@ -17,61 +17,162 @@ namespace Business.Services
 
         public Bank Create(Bank bank)
         {
-            bank.Id = _count;
-            var existBank= bankRepository.Get(x => x.Id == bank.Id);
-            if (existBank==null)
+            try
             {
-                bankRepository.Create(bank);
-                _count++;
-                return bank;
+                bank.Id = _count;
+                var existBank = bankRepository.Get(x => x.Id == bank.Id);
+                if (existBank == null)
+                {
+                    bankRepository.Create(bank);
+                    _count++;
+                    return bank;
+                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         public Bank Delete(int id)
         {
-            var bank = bankRepository.Get(x => x.Id == id);
-            if (bank==null)
+            try
             {
-                return null;
+                var bank = bankRepository.Get(x => x.Id == id);
+                if (bank == null)
+                {
+                    return null;
+                }
+                bankRepository.Delete(bank);
+                return bank;
             }
-            bankRepository.Delete(bank);
-            return bank;
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         public List<Bank> GetAll()
         {
-            return bankRepository.GetAll();
+            try
+            {
+                if (bankRepository.GetAll().Count == 0)
+                {
+                    return null;
+                }
+                return bankRepository.GetAll();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         public List<Bank> GetAllBanksAndMembersAdmin()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var banks = GetAll();
+                if (banks==null)
+                {
+                    return null;
+                }
+                return banks;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         public List<User> GetAllMemberByName(string bankName)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var bank = GetByName(bankName);
+                if (bank == null)
+                {
+                    return null;
+                }
+                return bank.Users;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
-        public List<User> GetAllMembersAdmin()
+        public List<Bank> GetAllMembersAdmin()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var banks = GetAll();
+                if (banks==null)
+                {
+                    return null;
+                }
+                return banks;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+           
         }
 
         public Bank GetById(int id)
         {
-            return bankRepository.Get(x => x.Id == id);
+            try
+            {
+                var bank = bankRepository.Get(x => x.Id == id);
+                if (bank == null)
+                {
+                    return null;
+                }
+                return bank;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         public Bank GetByName(string name)
         {
-            return bankRepository.Get(x => x.Name.ToLower() == name.ToLower());
+            try
+            {
+                var bank = bankRepository.Get(x => x.Name.ToLower() == name.ToLower());
+                if (bank == null)
+                {
+                    return null;
+                }
+                return bank;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+           
         }
 
-        public Bank Update(int id)
+        public Bank Update(Bank bank)
         {
-            throw new NotImplementedException();
+            var existBank = bankRepository.Get(x => x.Id == bank.Id);
+            if (existBank != null)
+            {
+                bankRepository.Update(bank);
+
+                return bank;
+            }
+            return null;
+
         }
     }
 }

@@ -120,6 +120,71 @@ namespace BankSimulation.Controller
             userService.Delete(user.Id);
             Helper.SetMessageAndColor($"{user.Name}'s account deleted:", ConsoleColor.Cyan);
         }
+        public void Update()
+        {
+            if (userService.GetAll().Count == 0)
+            {
+                Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
+                return;
+            }
+            Helper.SetMessageAndColor("First name, last name and cvv must be entered to safely update the card account", ConsoleColor.Yellow);
+            Helper.SetMessageAndColor("enter  Name for update your personal card account", ConsoleColor.Blue);
+            string name = Console.ReadLine();
+            Helper.SetMessageAndColor("enter Surename for update your personal card account", ConsoleColor.Blue);
+            string sureName = Console.ReadLine();
+            Helper.SetMessageAndColor("enter personal Cvv for update your personal card account", ConsoleColor.Blue);
+            string cvv = Console.ReadLine();
+            var user = userRepository.Get(x => x.Name.ToLower() == name.ToLower() && x.SureName.ToLower() == sureName.ToLower() && x.Cvv == cvv);
+            if (user == null)
+            {
+                Helper.SetMessageAndColor("user is not belong to you:", ConsoleColor.Red);
+                return;
+            }
+            var bank = bankService.GetById(user.Id);
+            Helper.SetMessageAndColor("enter new Name", ConsoleColor.Blue);
+            string newName = Console.ReadLine();
+            Helper.SetMessageAndColor("enter new  Sure Name", ConsoleColor.Blue);
+            string newSureName = Console.ReadLine();
+            Helper.SetMessageAndColor("enter Pin code:format: \"xxxx\":", ConsoleColor.Blue);
+        CheckPin: string pin = Console.ReadLine();
+            if (pin.Length != 4)
+            {
+                Helper.SetMessageAndColor("pin code must be 4 digits:", ConsoleColor.Red);
+                goto CheckPin;
+            }
+            foreach (var item in pin)
+            {
+                if (!Char.IsDigit(item))
+                {
+                    Helper.SetMessageAndColor("pin must contain only digits", ConsoleColor.Red);
+                    Helper.SetMessageAndColor("enter pin \"xxxx\" format", ConsoleColor.Yellow);
+                    goto CheckPin;
+                }
+            }
+        CheckPhone: Helper.SetMessageAndColor("enter Phone number \"+994xxxxxxxxx\" format ", ConsoleColor.Blue);
+            string phoneNumber = Console.ReadLine();
+            Regex regex = new Regex(@"^\+994(50|51|55|77|70|99)\d{7}$");
+            if (!regex.IsMatch(phoneNumber))
+            {
+                Helper.SetMessageAndColor("please enter correct phone number:", ConsoleColor.Red);
+                goto CheckPhone;
+            }
+            user.Name = newName;
+            user.SureName = sureName;
+            user.Phone = phoneNumber;
+            user.Pin = pin;
+            userService.Update(user);
+            Helper.SetMessageAndColor($"user  has  updated new infos:{user.Id} {user.Name} {user.SureName} {user.Pin} {user.Phone}", ConsoleColor.Cyan);
+            for (int i = 0; i < bank.Users.Count; i++)
+            {
+                if (user.Id == bank.Users[i].Id)
+                {
+                    bank.Users[i] = user;
+                }
+            }
+        }
+
+
         public void GetAll()
         {
             var users = userService.GetAll();
@@ -579,6 +644,17 @@ namespace BankSimulation.Controller
                 }
                 mark /= user.Bank.Rates.Count;
                 Helper.SetMessageAndColor($"users' evaluations out of 5 points:{mark}", ConsoleColor.Green);
+            }
+            var bank = bankService.GetById(user.Bank.Id);
+            Helper.SetMessageAndColor("only the admin of the bank to which the user belongs can update", ConsoleColor.Green);
+        CheckBankUserName: Helper.SetMessageAndColor($"enter {bank.Name} admin user name:", ConsoleColor.Yellow);
+            string adminBankUserName = Console.ReadLine();
+            Helper.SetMessageAndColor($"enter {bank.Name} admin password:", ConsoleColor.Yellow);
+            string adminBankPassword = Console.ReadLine();
+            if (adminUserName != bank.User || adminPassword != bank.Password)
+            {
+                Helper.SetMessageAndColor("admin username or password is incorrect:", ConsoleColor.Red);
+                goto CheckUserName;
             }
             Helper.SetMessageAndColor("enter new Pin code", ConsoleColor.Blue);
             CheckNewPin: string stringNewPin = Console.ReadLine();

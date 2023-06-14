@@ -70,7 +70,7 @@ namespace BankSimulation
                                 bankController.Delete();
                                 break;
                             case (int)BankChoice.UpdateBank:
-                                //update
+                                bankController.Update();
                                 break;
                             case (int)BankChoice.GetAllBank:
                                 bankController.GetAll();
@@ -82,13 +82,16 @@ namespace BankSimulation
                                 bankController.GetByName();
                                 break;
                             case (int)BankChoice.GetAllMemberByName:
-                                //get all members by bank name
+                                bankController.GetAllMemberByName();
                                 break;
                             case (int)BankChoice.GetAllBanksAndMembersAdmin:
-                                //get all banks and members by admin
+                                bankController.GetAllBanksAndMembersAdmin();
                                 break;
                             case (int)BankChoice.GetAllMembersAdmin:
-                                //get all members Admin
+                                bankController.GetAllMembersAdmin();
+                                break;
+                            case (int)BankChoice.UpdateAdminProfile:
+                                bankController.UpdateAdminPanel();
                                 break;
                             default:
                                 Helper.SetMessageAndColor("something went wrong:", ConsoleColor.Red);
@@ -106,7 +109,7 @@ namespace BankSimulation
                                 userController.Delete();
                                 break;
                             case (int)UserChoice.UpdateUser:
-                                //update user
+                                userController.Update();
                                 break;
                             case (int)UserChoice.GetAllUser:
                                 userController.GetAll();

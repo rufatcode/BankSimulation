@@ -57,12 +57,8 @@ namespace DataContext.Repository
             try
             {
                 User existBank = Get(x => x.Id == entity.Id);
-                if (existBank != null)
-                {
-                    existBank = entity;
-                    return true;
-                }
-                return false;
+                existBank = entity;
+                return true;
             }
             catch (Exception ex)
             {

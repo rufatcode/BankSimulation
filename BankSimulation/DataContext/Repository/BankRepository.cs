@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using DataContext.Interfaces;
 using Entities.Interfaces;
 using Entities.Models;
@@ -59,12 +60,8 @@ namespace DataContext.Repository
             try
             {
                 Bank existBank = Get(x => x.Id == entity.Id);
-                if (existBank != null)
-                {
-                    existBank = entity;
-                    return true;
-                }
-                return false;
+                existBank = entity;
+                return true;
             }
             catch (Exception ex)
             {
