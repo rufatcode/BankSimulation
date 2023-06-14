@@ -654,7 +654,7 @@ namespace BankSimulation.Controller
             if (adminUserName != bank.User || adminPassword != bank.Password)
             {
                 Helper.SetMessageAndColor("admin username or password is incorrect:", ConsoleColor.Red);
-                goto CheckUserName;
+                goto CheckBankUserName;
             }
             Helper.SetMessageAndColor("enter new Pin code", ConsoleColor.Blue);
             CheckNewPin: string stringNewPin = Console.ReadLine();

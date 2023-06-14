@@ -209,7 +209,15 @@ namespace BankSimulation.Controller
 				{
 					foreach (var user in item.Users)
 					{
-						Helper.SetMessageAndColor($"\nId:{user.Id} {user.Bank.Name} Bank Company {user.Name} {user.SureName}\n{user.cartNumbers} {user.ActivityDate} Cvv:{user.Cvv} Pin:{user.Pin}\nPhone:{user.Phone}\n", ConsoleColor.Cyan);
+						if (user.PinBlocked == true)
+						{
+							Helper.SetMessageAndColor($"\nDeactive: Id:{user.Id}  {user.Bank.Name} Bank Company {user.Name} {user.SureName}\n{user.cartNumbers} {user.ActivityDate} Cvv:{user.Cvv} Pin:{user.Pin}\nPhone:{user.Phone}\n", ConsoleColor.Cyan);
+						}
+						else
+						{
+
+							Helper.SetMessageAndColor($"\nActive: Id:{user.Id} {user.Bank.Name} Bank Company {user.Name} {user.SureName}\n{user.cartNumbers} {user.ActivityDate} Cvv:{user.Cvv} Pin:{user.Pin}\nPhone:{user.Phone}\n", ConsoleColor.Cyan);
+						}
 					}
 				}
 			}
