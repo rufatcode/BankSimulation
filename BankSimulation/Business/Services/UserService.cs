@@ -30,26 +30,34 @@ namespace Business.Services
                     int cartNumberpart1 = random.Next(1000, 10000);
                     int cartNumberpart2 = random.Next(1000, 10000);
                     user.cartNumbers += user.Bank.Signature + " " + cartNumberpart1 + " " + cartNumberpart2;
-                    foreach (var item in users)
+                    if (users!=null)
                     {
-                        if (user.cartNumbers == item.cartNumbers)
+                        foreach (var item in users)
                         {
-                            user.cartNumbers = null;
-                            break;
+                            if (user.cartNumbers == item.cartNumbers)
+                            {
+                                user.cartNumbers = null;
+                                break;
+                            }
                         }
                     }
+                    
                 }
                 while (user.Cvv == null)
                 {
                     user.Cvv = Convert.ToString(random.Next(100, 1000));
-                    foreach (var item in users)
+                    if (users!=null)
                     {
-                        if (user.Cvv == item.Cvv)
+                        foreach (var item in users)
                         {
-                            user.Cvv = null;
-                            break;
+                            if (user.Cvv == item.Cvv)
+                            {
+                                user.Cvv = null;
+                                break;
+                            }
                         }
                     }
+                    
                 }
                 user.ActivityDate = DateTime.Now.AddYears(5);
                 if (GetById(user.Id) == null)
@@ -151,6 +159,10 @@ namespace Business.Services
         {
             try
             {
+                if (userRepository.GetAll().Count==0)
+                {
+                    return null;
+                }
                 return userRepository.GetAll();
             }
             catch (Exception ex)
@@ -226,6 +238,22 @@ namespace Business.Services
             {
                 throw;
             }
+        }
+        public List<User> GetAllBlocked()
+        {
+            try
+            {
+                if (userRepository.GetAllDeleting().Count==0)
+                {
+                    return null;
+                }
+                return userRepository.GetAllDeleting();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
 
         public bool SendMoneyToUser(User from, User to, double ammount)

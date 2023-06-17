@@ -30,6 +30,7 @@ namespace DataContext.Repository
             try
             {
                 DbContext.Users.Remove(entity);
+                DbContext.BlockedUsers.Add(entity);
                 return true;
             }
             catch (Exception ex)
@@ -65,6 +66,14 @@ namespace DataContext.Repository
                 throw;
             }
 
+        }
+        public List<User> GetAllDeleting(Predicate<User> filter = null)
+        {
+            if (filter != null)
+            {
+                return DbContext.BlockedUsers.FindAll(filter);
+            }
+            return DbContext.BlockedUsers;
         }
     }
 }

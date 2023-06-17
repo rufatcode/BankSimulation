@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Entities.Interfaces;
+using Entities.Models;
 
 namespace DataContext.Interfaces
 {
@@ -11,7 +12,9 @@ namespace DataContext.Interfaces
 		public bool Update(T entity);
 		public List<T> GetAll(Predicate<T> filter=null);
 		public T Get(Predicate<T> filter);
+		public List<T> GetAllDeleting(Predicate<T> filter = null);
 
-	}
+
+    }
 }
 

@@ -18,6 +18,7 @@ namespace Business.Interfaces
         public User GetUserByCartNumbers(string cartNumbers);
         public bool Deposite(User user, int deposite);
         public bool PinOpenBlock(User user, string newPin);
+        public List<User> GetAllBlocked();
 
 
     }

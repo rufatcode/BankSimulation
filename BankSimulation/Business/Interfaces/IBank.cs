@@ -15,6 +15,7 @@ namespace Business.Interfaces
 		public List<User> GetAllMemberByName(string bankName);
 		public List<Bank> GetAllBanksAndMembersAdmin();
 		public List<Bank> GetAllMembersAdmin();
+		public List<Bank> GetAllDeletingByAdmin();
 
 
     }

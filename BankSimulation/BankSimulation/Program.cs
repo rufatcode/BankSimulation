@@ -31,18 +31,19 @@ namespace BankSimulation
                                             |*|--*---*---*---*---*---*---*---*--|*|-*---*---*---*---*---*---*---*---*---*----|*|
                                             |*|     Bank Options                |*|           User Options                   |*|
                                             |*|--*---*---*---*---*--*---*---*---|*|--*---*---*---*---*---*---*---*---*---*---|*|
-                                            |*|   1-Create Bank                 |*|            11-CreateUser                 |*|
-                                            |*|   2-Delete Bank                 |*|            12-DeleteUser                 |*|
-                                            |*|   3-Update Bank                 |*|            13-UpdateUser                 |*|
-                                            |*|   4-GetAllBank                  |*|            14-GetAllUser                 |*|
-                                            |*|   5-GetBankById                 |*|            15-GetUserById                |*|    
-                                            |*|   6-GetBankByName               |*|            16-GetUserByName              |*|
-                                            |*|   7-GetAllMemberByName          |*|            17-CashIn                     |*|
-                                            |*|   8-GetAllBanksAndMembersAdmin  |*|            18-CachOut                    |*|
-                                            |*|   9-GetAllMembersAdmin          |*|            19-SendMoneyToUser            |*|
-                                            |*|   10-update admin infos         |*|            20-GetUserByCartNumbers       |*|
-                                            |*|   0-Exit                        |*|            21-PinOpenBlock               |*|
-                                            |*|   -----------                   |*|            22-Get your personal account  |*|
+                                            |*|   1-Create Bank                 |*|            12-CreateUser                 |*|
+                                            |*|   2-Delete Bank                 |*|            13-DeleteUser                 |*|
+                                            |*|   3-Update Bank                 |*|            14-UpdateUser                 |*|
+                                            |*|   4-GetAllBank                  |*|            15-GetAllUser                 |*|
+                                            |*|   5-GetBankById                 |*|            16-GetUserById                |*|    
+                                            |*|   6-GetBankByName               |*|            17-GetUserByName              |*|
+                                            |*|   7-GetAllMemberByName          |*|            18-CashIn                     |*|
+                                            |*|   8-GetAllBanksAndMembersAdmin  |*|            19-CachOut                    |*|
+                                            |*|   9-GetAllMembersAdmin          |*|            20-SendMoneyToUser            |*|
+                                            |*|   10-update admin infos         |*|            21-GetUserByCartNumbers       |*|
+                                            |*|   0-Exit                        |*|            22-PinOpenBlock               |*|
+                                            |*|   11-GetAllDeletingBanks        |*|            23-Get your personal account  |*|        
+                                            |*|   --------------                |*|            24-GelAllBlockedUsersByAdmin  |*|
                                             |*|---*---*---*---*---*---*---*---*-|*|---*---*---*---*---*---*---*---*---*---*--|*|
                                             |*|--*---*---*---*---*---*---*---*--|*|-*---*---*---*---*---*---*---*---*---*---*|*|
                                              ", ConsoleColor.Blue);
@@ -57,7 +58,7 @@ namespace BankSimulation
                         Helper.SetMessageAndColor("proses is finshed", ConsoleColor.Blue);
                         break;
                     }
-                    if (selection > 0 && selection < 11)
+                    if (selection > 0 && selection < 12)
                     {
 
 
@@ -93,12 +94,15 @@ namespace BankSimulation
                             case (int)BankChoice.UpdateAdminProfile:
                                 bankController.UpdateAdminPanel();
                                 break;
+                            case (int)BankChoice.GetAllDeletingBanks:
+                                bankController.GetAllDeletingBanks();
+                                break;
                             default:
                                 Helper.SetMessageAndColor("something went wrong:", ConsoleColor.Red);
                                 break;
                         }
                     }
-                    else if (selection>10&&selection<24)
+                    else if (selection>11&&selection<25)
                     {
                         switch (selection)
                         {
@@ -137,6 +141,9 @@ namespace BankSimulation
                                 break;
                             case (int)UserChoice.GetAccount:
                                 userController.GetMyAccount();
+                                break;
+                            case (int)UserChoice.GelAllBlockedUsersByAdmin:
+                                userController.GetAllBlockedUsersByAdmin();
                                 break;
                             default:
                                 Helper.SetMessageAndColor("something went wrong:", ConsoleColor.Red);

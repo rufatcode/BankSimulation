@@ -33,6 +33,8 @@ namespace DataContext.Repository
             try
             {
                 DbContext.Banks.Remove(entity);
+
+                DbContext.DeletingBanks.Add(entity);
                 return true;
             }
             catch (Exception ex)
@@ -68,6 +70,14 @@ namespace DataContext.Repository
                 throw;
             }
             
+        }
+        public List<Bank> GetAllDeleting(Predicate<Bank> filter = null)
+        {
+            if (filter!=null)
+            {
+                return DbContext.DeletingBanks.FindAll(filter);
+            }
+            return DbContext.DeletingBanks;
         }
 
     }

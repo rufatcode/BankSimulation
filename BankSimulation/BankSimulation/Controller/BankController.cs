@@ -25,17 +25,18 @@ namespace BankSimulation.Controller
 			{
                 foreach (var item in banks)
                 {
-                    if (bankSignature == item.Signature)
-                    {
-                        Helper.SetMessageAndColor($"this siganure was belog to {item.Name} company", ConsoleColor.Red);
-                        Helper.SetMessageAndColor("please choose unique signature:", ConsoleColor.Blue);
-                        goto Signature;
-                    }
-                    else if (regex.IsMatch(item.Name.ToLower()))
+                   
+                    if (regex.IsMatch(item.Name.ToLower()))
                     {
                         Helper.SetMessageAndColor($"this Name was belog to {item.Name} company", ConsoleColor.Red);
                         Helper.SetMessageAndColor("please choose unique signature:", ConsoleColor.Blue);
                         goto CheckName;
+                    }
+                    else if (bankSignature == item.Signature)
+                    {
+                        Helper.SetMessageAndColor($"this siganure was belog to {item.Name} company", ConsoleColor.Red);
+                        Helper.SetMessageAndColor("please choose unique signature:", ConsoleColor.Blue);
+                        goto Signature;
                     }
                 }
             }
@@ -236,7 +237,11 @@ namespace BankSimulation.Controller
                 goto CheckId;
             }
             var bank = bankService.GetById(id);
-
+			if (bank==null)
+			{
+				Helper.SetMessageAndColor("bank not found:", ConsoleColor.Red);
+				return;
+			}
         CheckAdminOld: Helper.SetMessageAndColor("enter old username:", ConsoleColor.Blue);
             string userName = Console.ReadLine();
             Helper.SetMessageAndColor("enter old password:", ConsoleColor.Blue);
@@ -255,8 +260,8 @@ namespace BankSimulation.Controller
 				Helper.SetMessageAndColor("username and password must be at least 8 characters", ConsoleColor.Red);
 				goto CheckAdminNew;
 			}
-			bank.User = userName;
-			bank.Password = password;
+			bank.User = newUserName;
+			bank.Password = newPassword;
 			Helper.SetMessageAndColor("admin user name and password has been update", ConsoleColor.Cyan);
         }
 		public void Update()
@@ -344,6 +349,34 @@ namespace BankSimulation.Controller
 			Helper.SetMessageAndColor($"{bank.Name} bank company has done update:", ConsoleColor.Cyan);
         }
 
+		public void GetAllDeletingBanks()
+		{
+        CheckAdmin: Helper.SetMessageAndColor("enter admin user name:", ConsoleColor.Blue);
+            string adminUserName = Console.ReadLine();
+            Helper.SetMessageAndColor("enter admin password:", ConsoleColor.Blue);
+            string adminPassword = Console.ReadLine();
+            if (adminUserName != Helper.User || adminPassword != Helper.Password)
+            {
+                Helper.SetMessageAndColor("admin user name or password is incorrect:", ConsoleColor.Red);
+                goto CheckAdmin;
+            }
+            var banks = bankService.GetAllDeletingByAdmin();
+            if (banks == null)
+            {
+                Helper.SetMessageAndColor("deleting bank not found", ConsoleColor.Red);
+                return;
+            }
+            foreach (var item in banks)
+            {
+                if (item.Users.Count > 0)
+                {
+                    foreach (var user in item.Users)
+                    {
+                        Helper.SetMessageAndColor($"\n Id:{user.Id} {user.Bank.Name} Bank Company {user.Name} {user.SureName}\n{user.cartNumbers} {user.ActivityDate} Cvv:{user.Cvv} Pin:{user.Pin}\nPhone:{user.Phone}\n", ConsoleColor.Cyan);
+                    }
+                }
+            }
+        }
 
     }
 	enum BankChoice
@@ -357,7 +390,8 @@ namespace BankSimulation.Controller
 		GetAllMemberByName,
 		GetAllBanksAndMembersAdmin,
 		GetAllMembersAdmin,
-		UpdateAdminProfile
-	}
+		UpdateAdminProfile,
+        GetAllDeletingBanks
+    }
 }
 

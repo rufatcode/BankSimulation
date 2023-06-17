@@ -10,9 +10,11 @@ namespace Business.Services
 	{
         public static int _count = 1;
         private readonly BankRepository bankRepository;
+        private readonly UserRepository userRepository;
         public BankService()
 		{
             bankRepository = new BankRepository();
+            userRepository = new UserRepository();
 		}
 
         public Bank Create(Bank bank)
@@ -44,6 +46,11 @@ namespace Business.Services
                 if (bank == null)
                 {
                     return null;
+                }
+                var users = userRepository.GetAll(x => x.Bank.Name == bank.Name);
+                foreach (var item in users)
+                {
+                    userRepository.Delete(item);
                 }
                 bankRepository.Delete(bank);
                 return bank;
@@ -125,6 +132,21 @@ namespace Business.Services
             }
            
         }
+        public List<Bank> GetAllDeletingByAdmin()
+        {
+            try
+            {
+                if (bankRepository.GetAllDeleting().Count == 0)
+                {
+                    return null;
+                }
+                return bankRepository.GetAllDeleting();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
         public Bank GetById(int id)
         {
@@ -174,6 +196,7 @@ namespace Business.Services
             return null;
 
         }
+        
     }
 }
 

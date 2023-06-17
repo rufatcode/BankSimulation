@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Business.Interfaces;
 using Business.Services;
 using DataContext.Repository;
 using Entities.Models;
@@ -31,7 +32,7 @@ namespace BankSimulation.Controller
 		}
         public void Create()
         {
-            if (bankService.GetAll().Count==0)
+            if (bankService.GetAll()==null)
             {
                 Helper.SetMessageAndColor("no bank available", ConsoleColor.Red);
                 return;
@@ -99,7 +100,7 @@ namespace BankSimulation.Controller
         }
         public void Delete()
         {
-            if (userService.GetAll().Count==0)
+            if (userService.GetAll()==null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -122,7 +123,7 @@ namespace BankSimulation.Controller
         }
         public void Update()
         {
-            if (userService.GetAll().Count == 0)
+            if (userService.GetAll() == null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -188,7 +189,7 @@ namespace BankSimulation.Controller
         public void GetAll()
         {
             var users = userService.GetAll();
-            if (users.Count==0)
+            if (users==null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -200,7 +201,7 @@ namespace BankSimulation.Controller
         }
         public void GetMyAccount()
         {
-            if (userService.GetAll().Count == 0)
+            if (userService.GetAll() == null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -248,7 +249,7 @@ namespace BankSimulation.Controller
         }
         public void GetById()
         {
-            if (userService.GetAll().Count == 0)
+            if (userService.GetAll() ==null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -272,7 +273,7 @@ namespace BankSimulation.Controller
         }
         public void GetByName()
         {
-            if (userService.GetAll().Count == 0)
+            if (userService.GetAll() == null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -289,7 +290,7 @@ namespace BankSimulation.Controller
         }
         public void CashIn()
         {
-            if (userService.GetAll().Count == 0)
+            if (userService.GetAll() == null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -393,7 +394,7 @@ namespace BankSimulation.Controller
         }
         public void CashOut()
         {
-            if (userService.GetAll().Count == 0)
+            if (userService.GetAll() == null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -468,7 +469,7 @@ namespace BankSimulation.Controller
         }
         public void GetUserByCartNumbers()
         {
-            if (userService.GetAll().Count == 0)
+            if (userService.GetAll() == null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -485,7 +486,7 @@ namespace BankSimulation.Controller
         }
         public void SendMoneyToUser()
         {
-            if (userService.GetAll().Count == 0)
+            if (userService.GetAll() == null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -598,7 +599,7 @@ namespace BankSimulation.Controller
         }
         public void PinOpenBlock()
         {
-            if (userService.GetAll().Count == 0)
+            if (userService.GetAll() == null)
             {
                 Helper.SetMessageAndColor("No existing cart account", ConsoleColor.Red);
                 return;
@@ -651,7 +652,7 @@ namespace BankSimulation.Controller
             string adminBankUserName = Console.ReadLine();
             Helper.SetMessageAndColor($"enter {bank.Name} admin password:", ConsoleColor.Yellow);
             string adminBankPassword = Console.ReadLine();
-            if (adminUserName != bank.User || adminPassword != bank.Password)
+            if (adminBankUserName != bank.User || adminBankPassword != bank.Password)
             {
                 Helper.SetMessageAndColor("admin username or password is incorrect:", ConsoleColor.Red);
                 goto CheckBankUserName;
@@ -677,11 +678,32 @@ namespace BankSimulation.Controller
             user.Bank.Rates.Add(rate);
             
         }
-
+        public void GetAllBlockedUsersByAdmin()
+        {
+        CheckAdmin: Helper.SetMessageAndColor("enter admin user name:", ConsoleColor.Blue);
+            string adminUserName = Console.ReadLine();
+            Helper.SetMessageAndColor("enter admin password:", ConsoleColor.Blue);
+            string adminPassword = Console.ReadLine();
+            if (adminUserName != Helper.User || adminPassword != Helper.Password)
+            {
+                Helper.SetMessageAndColor("admin user name or password is incorrect:", ConsoleColor.Red);
+                goto CheckAdmin;
+            }
+            var users = userService.GetAllBlocked();
+            if (users == null)
+            {
+                Helper.SetMessageAndColor("deleting users not found", ConsoleColor.Red);
+                return;
+            }
+            foreach (var item in users)
+            {
+                Helper.SetMessageAndColor($"\n Id:{item.Id} {item.Bank.Name} Bank Company {item.Name} {item.SureName}\n{item.cartNumbers} {item.ActivityDate} Cvv:{item.Cvv} Pin:{item.Pin}\nPhone:{item.Phone}\n", ConsoleColor.Cyan);
+            }
+        }
     }
     enum UserChoice
     {
-        CreateUser=11,
+        CreateUser=12,
         DeleteUser,
         UpdateUser,
         GetAllUser,
@@ -693,6 +715,7 @@ namespace BankSimulation.Controller
         GetUserByCartNumbers,
         PinOpenBlock,
         GetAccount,
+        GelAllBlockedUsersByAdmin
     }
 }
 
